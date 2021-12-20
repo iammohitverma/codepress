@@ -383,14 +383,9 @@ foreach($outlet_type as $outlet){
             'parent'     => $outlet->term_id
             ) 
     );
-    $html .='<span data-id="'.$outlet->term_id.'" value="'.$outlet->name.'">'.$outlet->name.'</span>';
-    foreach ( $terms as $term ) {
-        $html .='<span data-id="'.$term->term_id.'" value="'.$term->name.'">'.$term->name.'</span>'; 
-    }
-
-}
-echo $html;
-</code>
+    $html .='<span data-id="'.$outlet->term_id.'" value="'.$outlet->name.'">'.$outlet->name.'</span>'; foreach ( $terms as $term ) { $html .='<span data-id="'.$term->term_id.'" value="'.$term->name.'">'.$term->name.'</span>';
+                                } } echo $html;
+                                </code>
                                 </pre>
                                 </span>
                             </div>
@@ -431,6 +426,70 @@ add_action('woocommerce_registration_redirect', 'ap_registration_redirect_wc', 2
                                     <pre class="line-numbers">
 <code class="language-html">&lt;!-- Logout Link (add in href) -->
 &lt;a href="./my-account/customer-logout/?_wpnonce=2bbbac43a8&customer-logout=true">Logout&lt;/a>
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li id="wc_support">
+                            <div>
+                                <span class="text">
+                                    Allow woocommerce support
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-php">function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+ }      
+ add_action( 'after_setup_theme', 'woocommerce_support' );
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span class="text">
+                                    When search result == 1 then stop auto redirection to single product page using filter below:-                                    
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-php">add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span class="text">
+                                    Customize Woocommerce Shop | Categories | Search pages using archive-product.php
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-php">//First allow woocommerce support in function.php (mentioned above)	&uarr;&uarr;
+//Copy archive-product.php from woocommerce plugin
+//Create Woocommerce folder inside your theme and paste archive-product.php 
+//( yourtheme/woocommerce/archive-product.php )
+</code>
+                                </pre>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span class="text">
+                                    Customize Woocommerce Single product page using single-product.php
+                                </span>
+
+                                <span class="function">
+                                    <pre class="line-numbers">
+<code class="language-php">//Copy single-product.php from woocommerce plugin
+//Create Woocommerce folder inside your theme and paste single-product.php
+//( yourtheme/woocommerce/single-product.php )
 </code>
                                 </pre>
                                 </span>
